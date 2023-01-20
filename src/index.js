@@ -3,11 +3,21 @@
 
 module.exports = function towelSort (matrix) {
   let newArr = []
-
-  for(let i = 0; i < matrix.length; i++) {
-		for(let item of matrix[i]) {
-    	newArr.push(item)
+  if(!matrix) {
+    return newArr
+  } else {
+    let filter = matrix.filter((item, index) => {
+      if(index % 2 !== 0) {
+        return item.reverse()
+      } else {
+        return item
+      }
+    })
+    for(let i = 0; i < filter.length; i++) {
+      for(let key of filter[i]) {
+        newArr.push(key)
+      }
     }
   }
-  return newArr.sort((a, b) => a-b)
+  return newArr
 }
